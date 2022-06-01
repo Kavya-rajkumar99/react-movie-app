@@ -7,7 +7,7 @@ function App() {
       name : "VIKRAM",
       rating : 8.5,
       image : "https://m.media-amazon.com/images/M/MV5BZTNhMjU2NTAtZTg5My00ZTg2LWIwZjMtNzRiNGFhZDc2OTg1XkEyXkFqcGdeQXVyMTEzNzg0Mjkx._V1_.jpg",
-      summary : "Vikram is an upcoming Indian Tamil language action thriller film written and directed by Lokesh Kanagaraj and produced by Raaj Kamal Films International.The film revolves around two siblings: one is a gangster and the other, a politician. They both kidnap a high ranking government official and trap him in their own prison. Vikram, a retired police officer, is assigned to save him and how he saves him forms the rest of the story."
+      summary : "Vikram is an upcoming Indian Tamil language action thriller film written and directed by Lokesh Kanagaraj and produced by Raaj Kamal Films International. The film revolves around two siblings: one is a gangster and the other, a politician. They both kidnap a high ranking government official and trap him in their own prison. Vikram, a retired police officer, is assigned to save him and how he saves him forms the rest of the story."
      },
      {
       name : "SPIDER-MAN No Way Home",

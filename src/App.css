@@ -36,7 +36,7 @@ body{
   margin-top: 12px;
 }
 .movie-summary{
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
