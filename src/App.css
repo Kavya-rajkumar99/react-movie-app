@@ -1,12 +1,43 @@
-.App {
+/* .App {
   text-align: center;
+} */
+body{
+  margin:24px;
 }
-
+.movie-list{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(380px,1fr));
+  justify-items: center;
+  gap:1rem;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
+.movie-post{
+  width:380px;
+  height:600px;
+  object-fit: cover;
+}
+.movie-specs{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.movie-container{
+  width:380px;
+}
+.movie-name{
+  margin-top: 5px;
+  margin-bottom: 12px;
+  font-family: 'Inter', sans-serif;
+}
+.movie-rating{
+  margin-top: 12px;
+}
+.movie-summary{
+  font-family: 'Poppins', sans-serif;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
