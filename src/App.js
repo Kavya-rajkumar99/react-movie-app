@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
 
 function App() {
   var moviesList = [
@@ -10,7 +11,7 @@ function App() {
       summary : "Vikram is an upcoming Indian Tamil language action thriller film written and directed by Lokesh Kanagaraj and produced by Raaj Kamal Films International. The film revolves around two siblings: one is a gangster and the other, a politician. They both kidnap a high ranking government official and trap him in their own prison. Vikram, a retired police officer, is assigned to save him and how he saves him forms the rest of the story."
      },
      {
-      name : "SPIDER-MAN No Way Home",
+      name : "SPIDER-MAN",
       rating : 8.3,
       image : "https://terrigen-cdn-dev.marvel.com/content/prod/1x/snh_online_6072x9000_posed_01.jpg",
       summary : "Spider-Man: No Way Home is a 2021 American superhero film based on the Marvel Comics character Spider-Man, co-produced by Columbia Pictures and Marvel Studios and distributed by Sony Pictures Releasing. It is the sequel to Spider-Man: Homecoming (2017) and Spider-Man: Far From Home (2019), and the 27th film in the Marvel Cinematic Universe (MCU). " 
@@ -71,15 +72,37 @@ function App() {
 }
 
 function Movie({name,rating,image,summary}){
+  const [toggle,setToggle] = useState(true);
+  const styles = {
+    color:rating > 8 ? "green":"red"
+  }
+  const paraStyle={
+    display:toggle?"block":"none"
+  }
+  
   return(
    <div className="movie-container">
      <img className="movie-post" src={image} alt={name} />
      <div className="movie-specs">
        <h2 className="movie-name">{name}</h2>
-       <p className="movie-rating">⭐ {rating}</p>
+       <p style={styles} className="movie-rating">⭐ {rating}</p>
      </div>
-     <p className="movie-summary">{summary}</p>
+     <button className="toggle-button" onClick={()=>setToggle(!toggle)}>{toggle?<i className="fa-solid fa-angle-up"></i>:<i className="fa-solid fa-angle-down"></i>}</button>
+     <p style={paraStyle} className="movie-summary">{summary}</p>
+     {/* {toggle? <p className="movie-summary">{summary}</p> : null} */}
+     <Counter />
    </div>
+  );
+}
+
+function Counter(){
+  const [like,setLike] = useState(0);
+  const [dislike,setDislike] = useState(0);
+  return(
+  <div className="button-container">
+    <button className="like-button" onClick={()=>setLike(like+1)}>👍{like}</button>
+    <button className="dislike-button" onClick={()=>setDislike(dislike+1)}>👎 {dislike}</button>
+  </div>
   );
 }
 export default App;

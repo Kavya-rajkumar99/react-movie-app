@@ -6,7 +6,7 @@ body{
 }
 .movie-list{
   display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(380px,1fr));
+  grid-template-columns: repeat(auto-fit,minmax(340px,1fr));
   justify-items: center;
   gap:1rem;
 }
@@ -15,7 +15,7 @@ body{
   pointer-events: none;
 }
 .movie-post{
-  width:380px;
+  width:340px;
   height:600px;
   object-fit: cover;
 }
@@ -25,18 +25,37 @@ body{
   justify-content: space-between;
 }
 .movie-container{
-  width:380px;
+  width:340px;
 }
 .movie-name{
   margin-top: 5px;
   margin-bottom: 12px;
-  font-family: 'Inter', sans-serif;
 }
 .movie-rating{
   margin-top: 12px;
+  font-size: 18px;
 }
 .movie-summary{
+  margin-top: 0px;
   font-family: 'Roboto', sans-serif;
+}
+.button-container{
+  display:flex;
+  gap:10px;
+}
+.like-button, .dislike-button{
+  font-size: 18px;
+  background-color: white;
+  border:none;
+  margin-left:-10px;
+}
+
+i{
+  font-size:18px;
+}
+.toggle-button{
+  background-color: white;
+  border: none;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
