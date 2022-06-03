@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import {useState} from "react";
+import { AddMovies } from './AddMovies';
 
 function App() {
-  var moviesList = [
+  const moviesList = [
     {
       name : "VIKRAM",
       rating : 8.5,
@@ -58,51 +58,12 @@ function App() {
       image : "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQm8U_-RJoMKrgvpIVLbDV8ovuHIp-p_Ls5I7WHaXJUUCbhjQVd",
       summary : "Jai Bhim is a 2021 Indian Tamil-language legal drama film directed by T. J. Gnanavel and produced by Jyothika and Suriya under 2D Entertainment. The film stars Suriya with Lijomol Jose and Manikandan in the lead."
      }
-    
   ]
   return (
     <div className="App">
-      <div className="movie-list">
-        {
-          moviesList.map((movie)=><Movie name={movie.name} rating={movie.rating} image={movie.image} summary={movie.summary}/>)
-        }
-      </div>
+        <AddMovies movies={moviesList} />
     </div>
   );
 }
 
-function Movie({name,rating,image,summary}){
-  const [toggle,setToggle] = useState(true);
-  const styles = {
-    color:rating > 8 ? "green":"red"
-  }
-  const paraStyle={
-    display:toggle?"block":"none"
-  }
-  
-  return(
-   <div className="movie-container">
-     <img className="movie-post" src={image} alt={name} />
-     <div className="movie-specs">
-       <h2 className="movie-name">{name}</h2>
-       <p style={styles} className="movie-rating">⭐ {rating}</p>
-     </div>
-     <button className="toggle-button" onClick={()=>setToggle(!toggle)}>{toggle?<i className="fa-solid fa-angle-up"></i>:<i className="fa-solid fa-angle-down"></i>}</button>
-     <p style={paraStyle} className="movie-summary">{summary}</p>
-     {/* {toggle? <p className="movie-summary">{summary}</p> : null} */}
-     <Counter />
-   </div>
-  );
-}
-
-function Counter(){
-  const [like,setLike] = useState(0);
-  const [dislike,setDislike] = useState(0);
-  return(
-  <div className="button-container">
-    <button className="like-button" onClick={()=>setLike(like+1)}>👍{like}</button>
-    <button className="dislike-button" onClick={()=>setDislike(dislike+1)}>👎 {dislike}</button>
-  </div>
-  );
-}
 export default App;

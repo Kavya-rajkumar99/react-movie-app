@@ -57,6 +57,34 @@ i{
   background-color: white;
   border: none;
 }
+.addMoviesContainer{
+  display:flex;
+  flex-direction: column;
+  gap:10px;
+  align-items: center;
+}
+.addMoviesContainer > input{
+  width:600px;
+  height:25px;
+}
+.addMoviesContainer > button{
+  background-color: dodgerblue;
+  color:white;
+  width:610px;
+  height:25px;
+  border-radius: 15px;
+  border:none;
+  margin-bottom: 10px;
+}
+@media(max-width:735px){
+  .addMoviesContainer > input{
+    width:340px;
+  }
+  .addMoviesContainer > button{
+    width:350px;
+   
+  }
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
