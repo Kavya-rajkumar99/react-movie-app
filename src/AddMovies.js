@@ -14,7 +14,7 @@ export function AddMovies({ moviesList,setMoviesList }) {
     summary: movieSummary
   };
   function checkMovie(){
-    if(movie.name!="" && movie.rating!="" && movie.image!="" && movie.summary!=""){
+    if(movie.name!=="" && movie.rating!=="" && movie.image!=="" && movie.summary!==""){
       setMoviesList([...moviesList, movie])
       setMovieName("");
       setMoviePoster("");
