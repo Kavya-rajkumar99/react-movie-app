@@ -1,9 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import { AddMovies } from './AddMovies';
+import { Routes, Route, Link, Navigate} from "react-router-dom";
+import React from "react";
+import { Home } from './Home';
+import { useState } from "react";
+import { RenderMovies } from "./RenderMovies"
+import { NotFound } from './NotFound';
 
 function App() {
-  const moviesList = [
+  const initialMoviesList = [
     {
       name : "VIKRAM",
       rating : 8.5,
@@ -59,11 +65,24 @@ function App() {
       summary : "Jai Bhim is a 2021 Indian Tamil-language legal drama film directed by T. J. Gnanavel and produced by Jyothika and Suriya under 2D Entertainment. The film stars Suriya with Lijomol Jose and Manikandan in the lead."
      }
   ]
+  const [moviesList, setMoviesList] = useState(initialMoviesList);
   return (
     <div className="App">
-        <AddMovies movies={moviesList} />
+      <nav className="nav-bar">
+        <ul className="links">
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/movies">Movies</Link></li>
+          <li><Link to="/movies/add">Add Movies</Link></li>
+        </ul>
+      </nav>
+        <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/movies" element={ <RenderMovies moviesList={moviesList} />} />
+        <Route path="/movies/add" element={ <AddMovies moviesList={moviesList} setMoviesList={setMoviesList} />} />
+        <Route path="/404" element={ <NotFound />} />
+        <Route path="*" element={ <Navigate replace to= "/404" />} />
+      </Routes>
     </div>
   );
 }
-
 export default App;
