@@ -47,7 +47,7 @@ body{
 .movie-specs{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 .movie-container{
   width:340px;
@@ -62,6 +62,7 @@ body{
   margin-top: 12px;
   font-size: 18px;
   padding-right:10px;
+  margin-left: auto;
 }
 .movie-summary{
   margin-top: 0px;

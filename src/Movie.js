@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Counter } from "./Counter";
 import { useNavigate } from "react-router-dom";
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import InfoIcon from '@mui/icons-material/Info';
 import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 
@@ -20,7 +20,7 @@ export function Movie({ name, rating, image, summary,id }) {
       <div className = "movie-info">
       <div className="movie-specs">
         <h2 className="movie-name">{name}</h2>
-        <span><button className="toggle-button" onClick={() => setToggle(!toggle)}>{toggle ?<KeyboardArrowUpOutlinedIcon color="primary"></KeyboardArrowUpOutlinedIcon> : < KeyboardArrowDownOutlinedIcon color="primary"></KeyboardArrowDownOutlinedIcon>}</button></span><span><InfoOutlinedIcon color="primary" onClick={()=>navigate(`/movies/${id}`)}></InfoOutlinedIcon></span>
+        <span><button className="toggle-button" onClick={() => setToggle(!toggle)}>{toggle ?<KeyboardArrowUpOutlinedIcon color="primary"></KeyboardArrowUpOutlinedIcon> : < KeyboardArrowDownOutlinedIcon color="primary"></KeyboardArrowDownOutlinedIcon>}</button></span><span><InfoIcon color="primary" onClick={()=>navigate(`/movies/${id}`)}></InfoIcon></span>
         <p style={styles} className="movie-rating">⭐ {rating}</p>
       </div>
       <p style={paraStyle} className="movie-summary">{summary}</p>
