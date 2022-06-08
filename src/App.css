@@ -1,8 +1,11 @@
 /* .App {
   text-align: center;
 } */
+body{
+  margin-bottom:10px;
+}
 .nav-bar{
-  background-color: black;
+  background-color: rgb(25, 118, 210);
   color: white;
   padding: 15px;
   margin-bottom: 20px;
@@ -13,7 +16,6 @@
   display: flex;
   gap:12px;
   font-size: 18px;
-  opacity: 0.7;
   align-items: center;
   padding-left: 10px;
 }
@@ -22,6 +24,9 @@
   text-decoration: none;
 }
 .welcomeMessage{
+  text-align: center;
+}
+.detailsPageButton{
   text-align: center;
 }
 .movie-list{
@@ -36,7 +41,7 @@
 }
 .movie-post{
   width:340px;
-  height:600px;
+  height:500px;
   object-fit: cover;
 }
 .movie-specs{
@@ -46,28 +51,33 @@
 }
 .movie-container{
   width:340px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
 }
 .movie-name{
   margin-top: 5px;
   margin-bottom: 12px;
+  padding-left:10px;
 }
 .movie-rating{
   margin-top: 12px;
   font-size: 18px;
+  padding-right:10px;
 }
 .movie-summary{
   margin-top: 0px;
   font-family: 'Roboto', sans-serif;
+  padding:10px;
+  margin-bottom: 0px;
 }
 .button-container{
+  margin-top:10px;
   display:flex;
   gap:10px;
 }
 .like-button, .dislike-button{
   font-size: 18px;
-  background-color: white;
-  border:none;
-  margin-left:-10px;
+  /* background-color: white; */
+  /* border:none; */
 }
 
 i{
@@ -81,22 +91,24 @@ i{
   display:flex;
   flex-direction: column;
   gap:10px;
-  margin-top: 10%;
-  align-items: center;
+  margin:10px;
 }
-.addMoviesContainer > input{
+.moviesContainer{
+  margin: 1.5rem;
+}
+ /* .addMoviesContainer > input{
   width:80%;
   height:25px;
-}
-.addMoviesContainer > button{
-  background-color: dodgerblue;
-  color:white;
-  width:81%;
+}  */
+/* .addMoviesContainer > button{
+  background-color: dodgerblue; 
+  color:white; 
+   width:81%;
   height:25px;
-  border-radius: 15px;
-  border:none;
-  margin-bottom: 10px;
-}
+  border-radius: 15px; 
+ border:none; 
+   margin-bottom: 10px; 
+}  */
 .notFound{
   width:80%;
   margin:auto;
