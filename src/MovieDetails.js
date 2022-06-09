@@ -18,9 +18,9 @@ export function MovieDetails({ moviesList }) {
                     <p style={styles} className="movie-rating">⭐ {movie.rating}</p>
                 </div>
                 <p className="movie-summary">{movie.summary}</p>
-                <div className="detailsPageButton">
+                 <div className="detailsPageButton"> 
                     <Button variant="outlined" startIcon={<ArrowBackIosIcon />} onClick={() => navigate(-1)}>Back</Button>
-                </div>
+                 </div> 
             </div>
         </div>
     );
