@@ -1,4 +1,5 @@
-import { useParams,useNavigate } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import React from "react";
 import Button from '@mui/material/Button';
 export function MovieDetails({ moviesList }) {
@@ -17,8 +18,8 @@ export function MovieDetails({ moviesList }) {
                     <p style={styles} className="movie-rating">⭐ {movie.rating}</p>
                 </div>
                 <p className="movie-summary">{movie.summary}</p>
-                <div className = "detailsPageButton">
-                <Button variant="outlined" onClick={()=>navigate(-1)}>Back</Button>
+                <div className="detailsPageButton">
+                    <Button variant="outlined" startIcon={<ArrowBackIosIcon />} onClick={() => navigate(-1)}>Back</Button>
                 </div>
             </div>
         </div>

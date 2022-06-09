@@ -1,27 +1,5 @@
-/* .App {
-  text-align: center;
-} */
-body{
-  margin-bottom:10px;
-}
-.nav-bar{
-  background-color: rgb(25, 118, 210);
-  color: white;
-  padding: 15px;
-  margin-bottom: 20px;
-}
-.links{
-  margin: 0;
-  list-style-type: none;
-  display: flex;
-  gap:12px;
-  font-size: 18px;
-  align-items: center;
-  padding-left: 10px;
-}
-.links>li>a{
-  color:white;
-  text-decoration: none;
+.route-container{
+  padding:16px;
 }
 .welcomeMessage{
   text-align: center;
@@ -30,10 +8,14 @@ body{
   text-align: center;
 }
 .movie-list{
-  display:grid;
+  /* display:grid;
   grid-template-columns: repeat(auto-fit,minmax(340px,1fr));
   justify-items: center;
-  gap:1rem;
+  gap:0.5rem; */
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 .App-logo {
   height: 40vmin;
@@ -46,47 +28,31 @@ body{
 }
 .movie-specs{
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  /* justify-content: space-between; */
 }
 .movie-container{
   width:340px;
-  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
-}
-.movie-name{
-  margin-top: 5px;
-  margin-bottom: 12px;
-  padding-left:10px;
-}
-.movie-rating{
-  margin-top: 12px;
-  font-size: 18px;
-  padding-right:10px;
-  margin-left: auto;
-}
-.movie-summary{
-  margin-top: 0px;
-  font-family: 'Roboto', sans-serif;
-  padding:10px;
-  margin-bottom: 0px;
-}
-.button-container{
-  margin:7px;
-  display:flex;
-  gap:10px;
-}
-.like-button, .dislike-button{
-  font-size: 18px;
-  /* background-color: white; */
-  /* border:none; */
 }
 
-i{
-  font-size:18px;
+.movie-name{
+  font-size:24px; 
+  margin:0px;
 }
-.toggle-button{
-  background-color: white;
-  border: none;
+.movie-rating{
+  font-size: 18px;
+  margin-top:15px;
+}
+.movie-summary{
+  margin: 0px;
+  font-family:'Roboto';
+}
+.button-container{
+  display:flex;
+}
+
+.like-button,.dislike-button{
+  font-size: 20px;;
 }
 .addMoviesContainer{
   display:flex;
@@ -97,19 +63,6 @@ i{
 .moviesContainer{
   margin: 1.5rem;
 }
- /* .addMoviesContainer > input{
-  width:80%;
-  height:25px;
-}  */
-/* .addMoviesContainer > button{
-  background-color: dodgerblue; 
-  color:white; 
-   width:81%;
-  height:25px;
-  border-radius: 15px; 
- border:none; 
-   margin-bottom: 10px; 
-}  */
 .notFound{
   width:80%;
   margin:auto;

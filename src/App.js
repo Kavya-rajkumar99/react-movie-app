@@ -1,12 +1,16 @@
 import './App.css';
 import { AddMovies } from './AddMovies';
-import { Routes, Route, Link, Navigate} from "react-router-dom";
+import { Routes, Route, Navigate} from "react-router-dom";
 import React from "react";
 import { Home } from './Home';
 import { useState } from "react";
+import {useNavigate} from "react-router-dom"
 import { RenderMovies } from "./RenderMovies";
 import { NotFound } from './NotFound';
 import { MovieDetails } from './MovieDetails';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
 
 function App() {
   const initialMoviesList = [
@@ -14,21 +18,21 @@ function App() {
       name : "VIKRAM",
       rating : 8.5,
       image : "https://m.media-amazon.com/images/M/MV5BZTNhMjU2NTAtZTg5My00ZTg2LWIwZjMtNzRiNGFhZDc2OTg1XkEyXkFqcGdeQXVyMTEzNzg0Mjkx._V1_.jpg",
-      summary : "Vikram is an upcoming Indian Tamil language action thriller film written and directed by Lokesh Kanagaraj and produced by Raaj Kamal Films International. The film revolves around two siblings: one is a gangster and the other, a politician. They both kidnap a high ranking government official and trap him in their own prison. Vikram, a retired police officer, is assigned to save him and how he saves him forms the rest of the story.",
+      summary : "Vikram is an upcoming Indian Tamil language action thriller film written and directed by Lokesh Kanagaraj and produced by Raaj Kamal Films. The film revolves around two siblings: one is a gangster and the other, a politician. They both kidnap a high ranking government official and trap him in their own prison.",
       trailer : "https://www.youtube.com/embed/2zXxlo5EGUE"
      },
      {
       name : "SPIDER-MAN",
       rating : 8.3,
       image : "https://terrigen-cdn-dev.marvel.com/content/prod/1x/snh_online_6072x9000_posed_01.jpg",
-      summary : "Spider-Man: No Way Home is a 2021 American superhero film based on the Marvel Comics character Spider-Man, co-produced by Columbia Pictures and Marvel Studios and distributed by Sony Pictures Releasing. It is the sequel to Spider-Man: Homecoming (2017) and Spider-Man: Far From Home (2019), and the 27th film in the Marvel Cinematic Universe (MCU). ",
+      summary : "Spider-Man: No Way Home is a 2021 American superhero film based on the Marvel Comics character Spider-Man, co-produced by Columbia Pictures and Marvel Studios and distributed by Sony Pictures Releasing. It is the sequel to Spider-Man: Homecoming (2017) and Spider-Man: Far From Home (2019)",
       trailer : "https://www.youtube.com/embed/JfVOs4VSpmA" 
      },
      {
       name : "RRR",
       rating : 8.2,
       image : "https://www.telugubulletin.com/wp-content/uploads/2022/02/images-48-497x616.jpeg",
-      summary : "RRR is a 2022 Indian Telugu-language epic action drama film directed by S. S. Rajamouli who wrote the film with V. Vijayendra Prasad. It is produced by D. V. V. Danayya of DVV Entertainment. The film stars N. T. Rama Rao Jr., Ram Charan, Ajay Devgn, Alia Bhatt, Shriya Saran, Samuthirakani, Ray Stevenson, Alison Doody, and Olivia Morris",
+      summary : "RRR is a 2022 Indian Telugu-language epic action drama film directed by S. S. Rajamouli who wrote the film with V. Vijayendra Prasad. It is produced by D. V. V. Danayya of DVV Entertainment. The film stars N. T. Rama Rao Jr., Ram Charan, Ajay Devgn, Alia Bhatt, Shriya Saran and Olivia Morris",
       trailer : "https://www.youtube.com/embed/f_vbAtFSEc0"
      },
      {
@@ -42,11 +46,11 @@ function App() {
       name : "THE BATMAN",
       rating : 7.9,
       image : "https://m.media-amazon.com/images/M/MV5BMDdmMTBiNTYtMDIzNi00NGVlLWIzMDYtZTk3MTQ3NGQxZGEwXkEyXkFqcGdeQXVyMzMwOTU5MDk@._V1_FMjpg_UX1000_.jpg",
-      summary : "The Batman is a 2022 American superhero film based on the DC Comics character Batman. Produced by Warner Bros. Pictures, DC Films, 6th & Idaho, and Dylan Clark Productions, and distributed by Warner Bros. Pictures, it is a reboot of the Batman film franchise. The film was directed by Matt Reeves, who wrote the screenplay with Peter Craig.",
+      summary : "The Batman is a 2022 American superhero film based on the DC Comics character Batman. Produced by Warner Bros. Pictures, DC Films, 6th & Idaho, and Dylan Clark Productions, and distributed by Warner Bros. Pictures, it is a reboot of the Batman film franchise.",
       trailer : "https://www.youtube.com/embed/mqqft2x_Aa4"
      },
      {
-      name : "THE AVENGERS",
+      name : "AVENGERS",
       rating : 8.4,
       image : "https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengersendgame_lob_crd_05.jpg",
       summary : "Marvel's The Avengers (classified under the name Marvel Avengers Assemble in the United Kingdom and Ireland), or simply The Avengers, is a 2012 American superhero film based on the Marvel Comics superhero team of the same name.",
@@ -56,7 +60,7 @@ function App() {
       name : "BEAST",
       rating : 8.0,
       image : "https://www.mixindia.com/wp-content/uploads/2022/01/Beast-Tamil-Movie-Poster-1.jpg",
-      summary: "Beast is a 2022 Indian Tamil-language action comedy film written and directed by Nelson and produced by Sun Pictures. The film stars Vijay and Pooja Hegde, leading an ensemble cast including Selvaraghavan, Shine Tom Chacko, Yogi Babu, Redin Kingsley, VTV Ganesh, Shaji Chen, Aparna Das, Sathish Krishnan, Lilliput and Ankur Ajit Vikal.",
+      summary: "Beast is a 2022 Indian Tamil-language action comedy film written and directed by Nelson and produced by Sun Pictures. The film stars Vijay and Pooja Hegde, leading an ensemble cast including Selvaraghavan, Shine Tom Chacko, Yogi Babu, Redin Kingsley and Ajit Vikal.",
       trailer : "https://www.youtube.com/embed/0E1kVRRi6lk"
      },
      {
@@ -75,15 +79,24 @@ function App() {
      }
   ]
   const [moviesList, setMoviesList] = useState(initialMoviesList);
+  const navigate = useNavigate();
   return (
     <div className="App">
-      <nav className="nav-bar">
+       <AppBar position="static">
+        <Toolbar>
+          <Button color="inherit" onClick={()=>navigate("/")}>Home</Button>
+          <Button color="inherit" onClick={()=>navigate("/movies")}>Movies</Button>
+          <Button color="inherit" onClick={()=>navigate("/movies/add")}>Add Movies</Button>
+        </Toolbar>
+      </AppBar>
+      {/* <nav className="nav-bar">
         <ul className="links">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/movies">Movies</Link></li>
           <li><Link to="/movies/add">Add Movies</Link></li>
         </ul>
-      </nav>
+      </nav> */}
+      <section className = "route-container">
         <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={ <RenderMovies moviesList={moviesList} />} />
@@ -92,6 +105,7 @@ function App() {
         <Route path="/404" element={ <NotFound />} />
         <Route path="*" element={ <Navigate replace to= "/404" />} />
       </Routes>
+      </section>
     </div>
   );
 }
