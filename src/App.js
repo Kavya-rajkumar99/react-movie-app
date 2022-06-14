@@ -86,13 +86,13 @@ function App() {
   const [moviesList, setMoviesList] = useState(initialMoviesList);
   const navigate = useNavigate();
   const [mode,setMode] = useState("dark");
-  const darkTheme = createTheme({
+  const theme = createTheme({
     palette: {
       mode: mode,
     },
   });
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
     <Paper elevation={3} style={{minHeight:"100vh",borderRadius:"0px"}}>
     <div className="App">
        <AppBar position="static">
