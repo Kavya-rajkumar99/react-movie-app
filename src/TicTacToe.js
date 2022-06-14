@@ -49,6 +49,7 @@ export function TicTacToe(){
     }
     return (
     <div className="game">
+        {!winner && count!==9? isXTurn? <h3>X's turn</h3> : <h3>O's turn</h3> : ""}
         {winner?<Confetti width={width} height={height} gravity={0.05}/> : ""}
         <div className="game-board">
         {
