@@ -8,9 +8,14 @@ import {useNavigate} from "react-router-dom"
 import { RenderMovies } from "./RenderMovies";
 import { NotFound } from './NotFound';
 import { MovieDetails } from './MovieDetails';
+import { TicTacToe } from './TicTacToe';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 function App() {
   const initialMoviesList = [
@@ -80,13 +85,25 @@ function App() {
   ]
   const [moviesList, setMoviesList] = useState(initialMoviesList);
   const navigate = useNavigate();
+  const [mode,setMode] = useState("dark");
+  const darkTheme = createTheme({
+    palette: {
+      mode: mode,
+    },
+  });
   return (
+    <ThemeProvider theme={darkTheme}>
+    <Paper elevation={3} style={{minHeight:"100vh",borderRadius:"0px"}}>
     <div className="App">
        <AppBar position="static">
         <Toolbar>
           <Button color="inherit" onClick={()=>navigate("/")}>Home</Button>
           <Button color="inherit" onClick={()=>navigate("/movies")}>Movies</Button>
           <Button color="inherit" onClick={()=>navigate("/movies/add")}>Add Movies</Button>
+          <Button color="inherit" onClick={()=>navigate("/tic-tac-toe")}>Tic-Tac-Toe</Button>
+          <Button style={{marginLeft:"auto"}} startIcon={mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}color="inherit" onClick={()=>setMode(mode==="dark"?"light":"dark")}>
+            {mode==="dark"?"Light" : "Dark"} Mode
+            </Button>
         </Toolbar>
       </AppBar>
       {/* <nav className="nav-bar">
@@ -102,11 +119,14 @@ function App() {
         <Route path="/movies" element={ <RenderMovies moviesList={moviesList} />} />
         <Route path="/movies/add" element={ <AddMovies moviesList={moviesList} setMoviesList={setMoviesList} />} />
         <Route path="/movies/:id" element={<MovieDetails moviesList={moviesList}/>} />
+        <Route path="/tic-tac-toe" element={<TicTacToe />} />
         <Route path="/404" element={ <NotFound />} />
         <Route path="*" element={ <Navigate replace to= "/404" />} />
       </Routes>
       </section>
     </div>
+    </Paper>
+    </ThemeProvider>
   );
 }
 export default App;
