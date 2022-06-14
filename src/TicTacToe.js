@@ -52,7 +52,7 @@ export function TicTacToe(){
         {winner?<Confetti width={width} height={height} gravity={0.05}/> : ""}
         <div className="game-board">
         {
-            board.map((val,index)=><GameBox index={index} val={val} onPlayerClick = {()=>handleClick(index)}/>)
+            board.map((val,index)=><GameBox key={index} index={index} val={val} onPlayerClick = {()=>handleClick(index)}/>)
         }
         </div>
         <Button variant="outlined" onClick={()=>restart()}>Restart</Button>

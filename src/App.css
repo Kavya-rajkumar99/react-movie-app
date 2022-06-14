@@ -83,7 +83,7 @@
   align-items: center;
 }
 .game-box:hover{
-  background-color: rgb(240, 235, 235);
+  background-color: rgb(240 235 235 / 13%)
 }
 .game-board{
   display:grid;
