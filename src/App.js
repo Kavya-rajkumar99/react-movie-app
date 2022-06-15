@@ -20,6 +20,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 function App() {
   const initialMoviesList = [
     {
+      id : '100',
       name : "VIKRAM",
       rating : 8.5,
       image : "https://m.media-amazon.com/images/M/MV5BZTNhMjU2NTAtZTg5My00ZTg2LWIwZjMtNzRiNGFhZDc2OTg1XkEyXkFqcGdeQXVyMTEzNzg0Mjkx._V1_.jpg",
@@ -27,6 +28,7 @@ function App() {
       trailer : "https://www.youtube.com/embed/2zXxlo5EGUE"
      },
      {
+      id:'101',
       name : "SPIDER-MAN",
       rating : 8.3,
       image : "https://terrigen-cdn-dev.marvel.com/content/prod/1x/snh_online_6072x9000_posed_01.jpg",
@@ -34,6 +36,7 @@ function App() {
       trailer : "https://www.youtube.com/embed/JfVOs4VSpmA" 
      },
      {
+      id:'102',
       name : "RRR",
       rating : 8.2,
       image : "https://www.telugubulletin.com/wp-content/uploads/2022/02/images-48-497x616.jpeg",
@@ -41,6 +44,7 @@ function App() {
       trailer : "https://www.youtube.com/embed/f_vbAtFSEc0"
      },
      {
+      id:'103',
       name : "KGF Chapter 2",
       rating : 8.7,
       image : "https://m.media-amazon.com/images/M/MV5BNzY1NTRhZDgtZGQyMi00OTQ1LWFhMmMtMmJhMTZhMjZhNDQ0XkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg",
@@ -48,6 +52,7 @@ function App() {
       trailer : "https://www.youtube.com/embed/Qah9sSIXJqk"
      },
      {
+      id:'104',
       name : "THE BATMAN",
       rating : 7.9,
       image : "https://m.media-amazon.com/images/M/MV5BMDdmMTBiNTYtMDIzNi00NGVlLWIzMDYtZTk3MTQ3NGQxZGEwXkEyXkFqcGdeQXVyMzMwOTU5MDk@._V1_FMjpg_UX1000_.jpg",
@@ -55,6 +60,7 @@ function App() {
       trailer : "https://www.youtube.com/embed/mqqft2x_Aa4"
      },
      {
+      id:'105',
       name : "AVENGERS",
       rating : 8.4,
       image : "https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengersendgame_lob_crd_05.jpg",
@@ -62,6 +68,7 @@ function App() {
       trailer : "https://www.youtube.com/embed/eOrNdBpGMv8"
      },
      {
+      id:'106',
       name : "BEAST",
       rating : 8.0,
       image : "https://www.mixindia.com/wp-content/uploads/2022/01/Beast-Tamil-Movie-Poster-1.jpg",
@@ -69,6 +76,7 @@ function App() {
       trailer : "https://www.youtube.com/embed/0E1kVRRi6lk"
      },
      {
+      id:'107',
       name : "DUNE",
       rating : 8.1,
       image : "https://m.media-amazon.com/images/M/MV5BN2FjNmEyNWMtYzM0ZS00NjIyLTg5YzYtYThlMGVjNzE1OGViXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX1000_.jpg",
@@ -76,6 +84,7 @@ function App() {
       trailer : "https://www.youtube.com/embed/8g18jFHCLXk"
      },
      {
+      id:'108',
       name : "JAI BHIM",
       rating : 8.9,
       image : "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQm8U_-RJoMKrgvpIVLbDV8ovuHIp-p_Ls5I7WHaXJUUCbhjQVd",
@@ -116,7 +125,7 @@ function App() {
       <section className = "route-container">
         <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movies" element={ <RenderMovies moviesList={moviesList} />} />
+        <Route path="/movies" element={ <RenderMovies moviesList={moviesList} setMoviesList={setMoviesList} />} />
         <Route path="/movies/add" element={ <AddMovies moviesList={moviesList} setMoviesList={setMoviesList} />} />
         <Route path="/movies/:id" element={<MovieDetails moviesList={moviesList}/>} />
         <Route path="/tic-tac-toe" element={<TicTacToe />} />
