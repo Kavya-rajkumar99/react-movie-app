@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Badge from '@mui/material/Badge';
-import IconButton from '@mui/material/IconButton';
+import Badge from "@mui/material/Badge";
+import IconButton from "@mui/material/IconButton";
 
 export function Counter() {
   const [like, setLike] = useState(0);
@@ -19,6 +19,6 @@ export function Counter() {
           <span className="dislike-button">👎</span>
         </Badge>
       </IconButton>
-      </div>
+    </div>
   );
 }
