@@ -1,4 +1,5 @@
-export function GameBox({ index, val, onPlayerClick }) {
+export function GameBox({ index, val, onPlayerClick, winningLine }) {
+  // const [a,b,c] = winningLine
   const styles = {
     color: val === "X" ? "green" : "red",
     borderLeft:
@@ -9,6 +10,7 @@ export function GameBox({ index, val, onPlayerClick }) {
       index === 0 || index === 1 || index === 2 ? "none" : "3px solid purple",
     borderBottom:
       index === 6 || index === 7 || index === 8 ? "none" : "3px solid purple",
+    // boxShadow: index===a||index===b||index===c?"rgba(0, 0, 0, 0.35) 0px 5px 15px" : "none"
   };
   return (
     <div style={styles} onClick={onPlayerClick} className="game-box">

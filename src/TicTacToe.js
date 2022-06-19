@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GameBox } from "./GameBox";
 import Button from "@mui/material/Button";
 import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
 export function TicTacToe() {
   const { width, height } = useWindowSize();
+  const [winner, setWinner] = useState(null);
+  const[tie,setTie] = useState(false)
+  // const[winningLine,setWinningLine] = useState([null,null,null])
   const [board, setBoard] = useState([
     null,
     null,
@@ -26,7 +29,7 @@ export function TicTacToe() {
       setIsXTurn(!isXTurn);
     }
   };
-  let count = 0;
+  // let count = 0;
   const decideWinner = (board) => {
     const lines = [
       [0, 1, 2],
@@ -41,25 +44,46 @@ export function TicTacToe() {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (board[a] !== null && board[a] === board[b] && board[b] === board[c]) {
-        console.log("Winner", board[a]);
-        return board[a];
+        setWinner(board[a]);
+        // setWinningLine([a,b,c])
+        // console.log("Winner", board[a]);
+        // return board[a];
       }
     }
-    return null;
   };
-  board.forEach((val) => {
-    if (val != null) {
-      count++;
+  const checkTie=(board)=>{
+    let count=0;
+    board.forEach((val)=>{
+      if(val!==null){
+        count++;
+      }
+    });
+    if(count===9){
+     setTie(true)
     }
-  });
-  const winner = decideWinner(board);
+  }
+  // board.forEach((val) => {
+  //   if (val != null) {
+  //     count++;
+  //   }
+  // });
+
+  useEffect(() => {
+    console.log(board);
+    decideWinner(board);
+    checkTie(board);
+  }, [board]);
+
   const restart = () => {
     setBoard([null, null, null, null, null, null, null, null, null]);
     setIsXTurn(true);
+    setWinner(null);
+    setTie(false);
+    // setWinningLine([null,null,null])
   };
   return (
     <div className="game">
-      {!winner && count !== 9 ? (
+      {!winner && !tie ? (
         isXTurn ? (
           <h3>X's turn</h3>
         ) : (
@@ -75,6 +99,7 @@ export function TicTacToe() {
             key={index}
             index={index}
             val={val}
+            // winningLine={winningLine}
             onPlayerClick={() => handleClick(index)}
           />
         ))}
@@ -84,7 +109,7 @@ export function TicTacToe() {
       </Button>
       {winner ? (
         <h1 className="game-over">Game Over!!! Winner is {winner}</h1>
-      ) : count === 9 ? (
+      ) : tie ? (
         <h1 className="game-over">Game Over!!! It's a draw</h1>
       ) : (
         ""
