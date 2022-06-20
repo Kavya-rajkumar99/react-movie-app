@@ -1,23 +1,26 @@
-import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
+import { useFormik } from "formik";
+import {movieValidationSchema} from './AddMovies';
 
 export function EditMovieForm({ movie }) {
-  const [name, setName] = useState(movie.name);
-  const [rating, setRating] = useState(movie.rating);
-  const [image, setImage] = useState(movie.image);
-  const [summary, setSummary] = useState(movie.summary);
-  const [trailer, setTrailer] = useState(movie.trailer);
+  const {values,handleSubmit,errors,touched,handleBlur,handleChange} = useFormik({
+    initialValues: {
+      name: movie.name,
+      rating: movie.rating,
+      image: movie.image,
+      summary: movie.summary,
+      trailer: movie.trailer,
+    },
+    validationSchema: movieValidationSchema,
+    onSubmit: (updatedMovie) => {
+      console.log(updatedMovie);
+      editMovie(updatedMovie);
+    },
+  });
   const navigate = useNavigate();
-  const editMovie = () => {
-    const updatedMovie = {
-      name: name,
-      rating: rating,
-      image: image,
-      summary: summary,
-      trailer: trailer,
-    };
+  const editMovie = (updatedMovie) => {
     fetch(`https://6278ea10d00bded55ae0fd07.mockapi.io/movies/${movie.id}`, {
       method: "PUT",
       body: JSON.stringify(updatedMovie),
@@ -28,46 +31,66 @@ export function EditMovieForm({ movie }) {
   };
   return (
     <div className="moviesContainer">
-      <section className="addMoviesContainer">
+      <form className="addMoviesContainer" onSubmit={handleSubmit}>
         <TextField
-          value={name}
-          label="Name"
-          variant="outlined"
-          onChange={(event) => setName(event.target.value)}
-          size="small"
+           label="Name"
+           value={values.name}
+           name="name"
+           onChange={handleChange}
+           onBlur={handleBlur}
+           variant="outlined"
+           size="small"
+           error={touched.name && errors.name}
+           helperText={touched.name && errors.name ? errors.name : ""}
         />
         <TextField
-          value={image}
           label="Poster"
+          value={values.image}
+          name="image"
+          onChange={handleChange}
+          onBlur={handleBlur}
           variant="outlined"
-          onChange={(event) => setImage(event.target.value)}
           size="small"
+          error={touched.image && errors.image}
+          helperText={touched.image && errors.image ?errors.image : ""}
         />
         <TextField
-          value={rating}
           label="Rating"
+          value={values.rating}
+          name="rating"
+          onChange={handleChange}
+          onBlur={handleBlur}
           variant="outlined"
-          onChange={(event) => setRating(event.target.value)}
           size="small"
+          error={touched.rating && errors.rating}
+          helperText={touched.rating && errors.rating ? errors.rating : ""}
         />
         <TextField
-          value={summary}
-          label="Summary"
-          variant="outlined"
-          onChange={(event) => setSummary(event.target.value)}
-          size="small"
+         label="Summary"
+         value={values.summary}
+         name="summary"
+         onChange={handleChange}
+         onBlur={handleBlur}
+         variant="outlined"
+         size="small"
+         error={touched.summary && errors.summary}
+         helperText={touched.summary && errors.summary ?errors.summary : ""}
         />
         <TextField
-          value={trailer}
           label="Trailer"
+          value={values.trailer}
+          name="trailer"
+          onBlur={handleBlur}
+          onChange={handleChange}
           variant="outlined"
-          onChange={(event) => setTrailer(event.target.value)}
           size="small"
+          error={touched.trailer && errors.trailer}
+          helperText={touched.trailer && errors.trailer ?errors.trailer : ""}
         />
-        <Button variant="contained" color="success" onClick={() => editMovie()}>
+        <Button type="submit" variant="contained" color="success">
           Save
         </Button>
-      </section>
+      </form>
     </div>
   );
 }

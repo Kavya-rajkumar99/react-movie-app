@@ -17,6 +17,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { BasicForm } from "./BasicForm";
 
 function App() {
   // const initialMoviesList = [
@@ -147,6 +148,7 @@ function App() {
               <Route path="/movies/edit/:id" element={<EditMovie />} />
               <Route path="/tic-tac-toe" element={<TicTacToe />} />
               <Route path="/404" element={<NotFound />} />
+              <Route path="/basic-form" element = {<BasicForm />} />
               <Route path="*" element={<Navigate replace to="/404" />} />
             </Routes>
           </section>
@@ -156,3 +158,4 @@ function App() {
   );
 }
 export default App;
+
