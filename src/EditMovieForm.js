@@ -22,7 +22,7 @@ export function EditMovieForm({ movie }) {
   });
   const navigate = useNavigate();
   const editMovie = (updatedMovie) => {
-    fetch(`${API}/movies/${movie.id}`, {
+    fetch(`${API}/movies/${movie._id}`, {
       method: "PUT",
       body: JSON.stringify(updatedMovie),
       headers: {
