@@ -3,10 +3,11 @@ import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { API } from "./global";
 
 export const movieValidationSchema = yup.object({
   name: yup.string().required("Please enter the movie name"),
-  image: yup
+  poster: yup
     .string()
     .required("Please enter the movie poster")
     .min(20, "Movie poster should have a minimum of 20 characters"),
@@ -30,7 +31,7 @@ export function AddMovies() {
     initialValues: {
       name: "",
       rating: "",
-      image: "",
+      poster: "",
       summary: "",
       trailer: "",
     },
@@ -43,7 +44,7 @@ export function AddMovies() {
 
   const navigate = useNavigate();
   const addMovie = (newMovie) => {
-    fetch("https://6278ea10d00bded55ae0fd07.mockapi.io/movies", {
+    fetch(`${API}/movies`, {
       method: "POST",
       body: JSON.stringify(newMovie),
       headers: {
@@ -72,14 +73,14 @@ export function AddMovies() {
         />
         <TextField
           label="Poster"
-          value={values.image}
-          name="image"
+          value={values.poster}
+          name="poster"
           onChange={handleChange}
           onBlur={handleBlur}
           variant="outlined"
           size="small"
-          error={touched.image && errors.image}
-          helperText={touched.image && errors.image ?errors.image : ""}
+          error={touched.poster && errors.poster}
+          helperText={touched.poster && errors.poster ?errors.poster : ""}
         />
         
         <TextField
@@ -125,7 +126,7 @@ export function AddMovies() {
         <p>{JSON.stringify(errors)}</p> */}
       </form>
       {/* <div className="movie-list">
-        {moviesList.map((movie) => <Movie name={movie.name} rating={movie.rating} image={movie.image} summary={movie.summary} />)}
+        {moviesList.map((movie) => <Movie name={movie.name} rating={movie.rating} poster={movie.poster} summary={movie.summary} />)}
       </div> */}
     </div>
   );

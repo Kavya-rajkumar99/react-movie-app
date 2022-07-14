@@ -4,19 +4,20 @@ import { Movie } from "./Movie";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
+import {API} from './global';
 
 export function RenderMovies() {
   const [moviesList, setMoviesList] = useState([]);
   const navigate = useNavigate();
   const getMovies = () => {
-    fetch("https://6278ea10d00bded55ae0fd07.mockapi.io/movies", {
+    fetch(`${API}/movies`, {
       method: "GET",
     })
       .then((data) => data.json())
       .then((movies) => setMoviesList(movies));
   };
   const deleteMovie = (id) => {
-    fetch(`https://6278ea10d00bded55ae0fd07.mockapi.io/movies/${id}`, {
+    fetch(`${API}/movies/${id}`, {
       method: "DELETE",
     }).then(() => getMovies());
   };

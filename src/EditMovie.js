@@ -2,12 +2,13 @@ import { EditMovieForm } from "./EditMovieForm";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
+import {API} from './global';
 
 export function EditMovie() {
   const [movie, setMovie] = useState(null);
   const { id } = useParams();
   const getMovie = () => {
-    fetch(`https://6278ea10d00bded55ae0fd07.mockapi.io/movies/${id}`, {
+    fetch(`${API}/movies/${id}`, {
       method: "GET",
     })
       .then((data) => data.json())

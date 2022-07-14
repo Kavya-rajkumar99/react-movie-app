@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { useFormik } from "formik";
 import {movieValidationSchema} from './AddMovies';
+import {API} from './global';
 
 export function EditMovieForm({ movie }) {
   const {values,handleSubmit,errors,touched,handleBlur,handleChange} = useFormik({
     initialValues: {
       name: movie.name,
       rating: movie.rating,
-      image: movie.image,
+      poster: movie.poster,
       summary: movie.summary,
       trailer: movie.trailer,
     },
@@ -21,7 +22,7 @@ export function EditMovieForm({ movie }) {
   });
   const navigate = useNavigate();
   const editMovie = (updatedMovie) => {
-    fetch(`https://6278ea10d00bded55ae0fd07.mockapi.io/movies/${movie.id}`, {
+    fetch(`${API}/movies/${movie.id}`, {
       method: "PUT",
       body: JSON.stringify(updatedMovie),
       headers: {
@@ -45,14 +46,14 @@ export function EditMovieForm({ movie }) {
         />
         <TextField
           label="Poster"
-          value={values.image}
-          name="image"
+          value={values.poster}
+          name="poster"
           onChange={handleChange}
           onBlur={handleBlur}
           variant="outlined"
           size="small"
-          error={touched.image && errors.image}
-          helperText={touched.image && errors.image ?errors.image : ""}
+          error={touched.poster && errors.poster}
+          helperText={touched.poster && errors.poster ?errors.poster : ""}
         />
         <TextField
           label="Rating"

@@ -20,7 +20,7 @@ export function Movie({ movie, id, deleteButton, editButton }) {
   const navigate = useNavigate();
   return (
     <Card className="movie-container" sx={{ height: "min-content" }}>
-      <img className="movie-post" src={movie.image} alt={movie.name} />
+      <img className="movie-post" src={movie.poster} alt={movie.name} />
       <CardContent>
         <div className="movie-specs">
           <h3 className="movie-name">
