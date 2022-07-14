@@ -4,7 +4,7 @@ import { Movie } from "./Movie";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
-import {API} from './global';
+import {API} from './global'
 
 export function RenderMovies() {
   const [moviesList, setMoviesList] = useState([]);
@@ -26,18 +26,18 @@ export function RenderMovies() {
     <div className="movie-list">
       {moviesList.map((movie, index) => (
         <Movie
-          key={movie.id}
+          key={movie._id}
           movie={movie}
-          id={movie.id}
+          id={movie._id}
           deleteButton={
-            <IconButton onClick={() => deleteMovie(movie.id)} color="error">
+            <IconButton onClick={() => deleteMovie(movie._id)} color="error">
               <DeleteIcon color="error"></DeleteIcon>
             </IconButton>
           }
           editButton={
             <IconButton
               style={{ marginLeft: "auto" }}
-              onClick={() => navigate(`/movies/edit/${movie.id}`)}
+              onClick={() => navigate(`/movies/edit/${movie._id}`)}
               color="secondary"
             >
               <EditIcon color="secondary" />
