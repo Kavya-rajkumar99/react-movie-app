@@ -141,7 +141,8 @@ function App() {
       </nav> */}
           <section className="route-container">
             <Routes>
-              <Route path="/" element={<Home />} />
+              {/* <Route path="/" element={<Home />} /> */}
+              <Route path="/" element ={<Navigate replace to="/movies" />} />
               <Route path="/movies" element={<RenderMovies />} />
               <Route path="/movies/add" element={<AddMovies />} />
               <Route path="/movies/:id" element={<MovieDetails />} />
