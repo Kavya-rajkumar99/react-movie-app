@@ -108,12 +108,12 @@ function App() {
         <div className="App">
           <AppBar position="static">
             <Toolbar>
-              <Button color="inherit" onClick={() => navigate("/")}>
+              <Button color="inherit" onClick={() => navigate("/movies")}>
                 Home
               </Button>
-              <Button color="inherit" onClick={() => navigate("/movies")}>
+              {/* <Button color="inherit" onClick={() => navigate("/movies")}>
                 Movies
-              </Button>
+              </Button> */}
               <Button color="inherit" onClick={() => navigate("/movies/add")}>
                 Add Movies
               </Button>
